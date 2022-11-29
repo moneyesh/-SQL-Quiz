@@ -280,3 +280,40 @@ made by customer 100.
 
 
 SELECT id, status, order_total FROM orders WHERE customer_id=100;
+
+
+==========
+21
+
+-----
+
+Write a single query that shows the id, status, and order total for all
+orders made by 'pclark74@gmail.com'. Use a subselect to do this.
+
+
+-----
+
+
+SELECT id, status, order_total
+FROM Orders
+WHERE customer_id = (
+  SELECT id
+  FROM Customers
+  WHERE email = 'pclark74@gmail.com'
+  );
+
+
+==========
+22
+
+-----
+
+Write a query that shows the total amount of revenue that comes from
+internet orders.
+
+-----
+
+
+SELECT SUM(order_total)
+FROM Orders
+WHERE salesperson_id is NULL;
